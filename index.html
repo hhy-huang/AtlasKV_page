@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- TypeIt package -->
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="AtlasKV: Augmenting LLMs with Billion-Scale Knowledge Graphs in 20GB VRAM">
+        <meta name="keywords" content="Efficient, Scalable, LLM, Knowledge Graph">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AtlasKV: Augmenting LLMs with Billion-Scale Knowledge Graphs in 20GB VRAM</title>
+        <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+        <link rel="stylesheet" href="./static/css/bulma.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+        <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        <link rel="stylesheet" href="./static/css/index.css">
+        <link rel="icon" href="./static/images/higraphllm.webp">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src="./static/js/fontawesome.all.min.js"></script>
+        <script src="./static/js/bulma-carousel.min.js"></script>
+        <script src="./static/js/bulma-slider.min.js"></script>
+        <script src="./static/js/index.js"></script>
+        <!-- Typing Effect JS -->
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/5.10.1/typeit.min.js"></script>
+        <!-- / Typing Effect JS -->
+        <style>
+    .bigdiv {
+      font-size: large;
+      font-family: "Courier New";
+      padding: 2rem;
+    }
+    p {
+      padding: 2rem;
+    }
+        </style>
+    </head>
+    <body>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <h1 class="title is-1 publication-title">AtlasKV: Augmenting LLMs with Billion-Scale Knowledge Graphs in 20GB VRAM</h1>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">
+                                    <a href="https://lfhase.win">Haoyu Huang</a>
+                                    <sup>1</sup>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://lars-group.github.io/">Hong Ting Tsang</a>
+                                    <sup>1</sup>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://juzhengz.github.io/">Jiaxin Bai</a>
+                                    <sup>1</sup>
+                                    ,
+                                </span>
+                                <br>
+                                <span class="author-block">
+                                    <a href="https://www.cse.cuhk.edu.hk/~jcheng/">Xi Peng</a>
+                                    <sup>2</sup>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://yataobian.com/">Gong Zhang</a>
+                                    <sup>2</sup>
+                                    ,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://yataobian.com/">Yangqiu Song</a>
+                                    <sup>1</sup>
+                                    ,
+                                </span>
+                            </div>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">
+                                    <sup>1</sup>HKUST,
+                                </span>
+                                <span class="author-block">
+                                    <sup>2</sup>Theory Lab, Huawei,
+                                </span>
+                            </div>
+                            <!-- <div class="is-size-5 publication-authors">
+                                <span class="author-block" style="font-size: 15px;">(
+                                    <sup>*</sup>Intern at Tencent AI Lab)
+                                </span>
+                            </div> -->
+                            <div class="column has-text-centered">
+                                <div class="publication-links">
+                                    <!-- PDF Link. -->
+                                    <span class="link-block">
+                                        <a href="https://arxiv.org/pdf/2510.17934" class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </span>
+                                            <span>Paper</span>
+                                        </a>
+                                    </span>
+                                    <!-- Code Link. -->
+                                    <span class="link-block">
+                                        <a href="https://github.com/HKUST-KnowComp/AtlasKV" class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span>Code</span>
+                                        </a>
+                                    </span>
+                                    <!-- Dataset Link. -->
+                                    <span class="link-block">
+                                        <a href="https://huggingface.co/collections/HaoyuHuang2/atlaskv" class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <svg class="svg-inline--fa fa-database fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="database" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                                                    <path fill="currentColor"
+                                                        d="M448 73.143v45.714C448 159.143 347.667 192 224 192S0 159.143 0 118.857V73.143C0 32.857 100.333 0 224 0s224 32.857 224 73.143zM448 176v102.857C448 319.143 347.667 352 224 352S0 319.143 0 278.857V176c48.125 33.143 136.208 48.572 224 48.572S399.874 209.143 448 176zm0 160v102.857C448 479.143 347.667 512 224 512S0 479.143 0 438.857V336c48.125 33.143 136.208 48.572 224 48.572S399.874 369.143 448 336z">
+                                                    </path>
+                                                </svg><!-- <i class="fas fa-database"></i> Font Awesome fontawesome.com -->
+                                            </span>
+                                            <span>Dataset</span>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="content has-text-centered">
+              <img src="./static/images/overview.png" style="width:400px;">
+            </div>
+            <section class="section">
+                <div class="container is-max-desktop">
+                    <!-- Abstract. -->
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Abstract</h2>
+                            <div class="content has-text-justified">
+                                <p>
+                                    Retrieval-augmented generation (RAG) has shown some success in augmenting large language models (LLMs) with external knowledge. However, as a nonparametric knowledge integration paradigm for LLMs, RAG methods heavily rely on external retrieval modules and the retrieved textual context prior. Especially for very large scale knowledge augmentation, they would introduce substantial inference latency due to expensive searches and much longer relevant context. In this paper, we propose a parametric knowledge integration method, called AtlasKV, a scalable, effective, and general way to augment LLMs with billion-scale knowledge graphs (KGs) (e.g. 1B triples) using very little GPU memory cost (e.g. less than 20GB VRAM). In AtlasKV, we introduce KG2KV and HiKVP to integrate KG triples into LLMs at scale with sub-linear time and memory complexity. It maintains strong knowledge grounding and generalization performance using the LLMs' inherent attention mechanism, and requires no external retrievers, long context priors, or retraining when adapting to new knowledge.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Abstract. -->
+                </div>
+            </section>
+            
+            <section class="section">
+                <div class="container is-max-desktop">
+                    <!-- Abstract. -->
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">KV2KV Process</h2>
+                            <div class="content has-text-justified">
+                                <!-- Add image -->
+                                <div class="figure" style="align: left; text-align:center;">
+                                    <img
+                                        src="./static/images/KG2KV.png"
+                                        alt="img description"
+                                        width="800"
+                                        height="600"
+                                    >
+                                    <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                        <b>Figure 1</b>. An example of how we transform the KG triples to Q-K-V data.
+                                    </p>
+                                </div>
+                                Building on the observation that every triple in KGs can be naturally decomposed into Q-K-V strings, which shares very similar structure with the Q-K-V vectors of selfattention networks in LLMs, we introduce the concept of KGKV and employ the KG2KV pipeline to transform each KG triple into Q-K-V strings and their corresponding sentence embedding vectors.
+                                <!-- \textit{(b)} Therefore, HIGHT significantly reduces the hallucination of LGLMs and improves the downstream performance -->
+                                <!-- across various molecule-centric tasks. All metrics are transformed a bit such that a higher number means a better -->
+                                <!-- downstream task performance. -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Abstract. -->
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column is-full-width has-text-centered">
+                        <h2 class="title is-3">Hierarchical Key-Value Pruning</h2>
+                        <div class="content has-text-justified is-centered">
+                            <p>
+                                Inspired by various works that achieve some success by organizing hierarchical knowledge structure on textual chunks, which is an intuitive way to organize the world's knowledge, we employ the hierarchical clustering to cluster the keys of KGKVs into a hierarchical structure. This design aims to share the computational and memory burden during inference time on each layer of the hierarchical knowledge keys.
+                            </p>
+                        </div>
+                        <div class="figure" style="align: left; text-align:center;">
+                            <img src="./static/images/hikvp.png" alt="img description" width="800" height="600">
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 2.</b>An overview of hierarchical key-value pruning (HiKVP) with three layers of knowledge keys at the l-th attention layer. The gray background indicate that the part is stored and computed in the GPU memory.
+                            </p>
+                        </div>
+                        <div class="content has-text-justified is-centered">
+                            <p>
+                                During inference time, usually there are only a few relevant KG
+                                values needed for the query. And the injection of irrelevant knowledge would also introduce noise. So we use a hierarchical key-value pruning (HiKVP) pipeline as shown in Figure 2 to efficiently and scalably find the most relevant KGKVs for the query. HiKVP significantly reduces the time and memory complexity of KBLaM from linear to sub-linear, as demonstrated in Figure 3,
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img src="./static/images/complexity.png" style="width:500px;" class="result-image"
+                                alt="Interpolation end reference image.">
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 3.</b> Comparison of the time and memory complexity of AtlasKV, KBLaM, RAG, CAG and ICL methods, where the parts marked in teal color represent they could be very large.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column is-full-width has-text-centered">
+                        <h2 class="title is-3">Performance</h2>
+                        <div class="content has-text-justified is-centered">
+                            <p>
+                                AtlasKV is more scalable with HiKVP. To verify the scalability of AtlasKV with HiKVP, we compare the GPU memory usage at inference time of AtlasKV and other methods across a wide range of KG sizes from 1 to 1B triples. As shown in Figure 4, the colored areas represent how much VRAM is saved compared with the other method. It demonstrates that with the help of HiKVP, AtlasKV can save a huge amount of VRAM compared with ICL as well as KBLaM and achieve a much lower GPU memory cost.
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img
+                                src="./static/images/gpu.png"
+                                style="width:800px;"
+                                class="result-image"
+                                alt="Interpolation end reference image."
+                            >
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 4.</b> GPU memory usage comparison of AtlasKV and other
+                                methods across various KG sizes from 1 to 1B triples.
+                            </p>
+                        </div>
+                        <div class="content has-text-justified is-centered">
+                            <p>
+                                AtlasKV is more accurate and generalizable with KGKVs. Not only can AtlasKV save a huge amount of inference cost with strong scalability, but it can also maintain a higher knowledge grounding performance with strong generalization ability.
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img src="./static/images/result.png" style="width:500px;" class="result-image"
+                                alt="Interpolation end reference image.">
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 5.</b> The knowledge grounding performance of AtlasKV against KBLaM with all-MiniLM-L6-v2 as the sentence encoder on three OOD evaluation datasets across various tuning steps and KG sizes. We defaultly set the top-k in HiKVP to 128, 64, and 16 for the kR, kI, kL respectively.
+                            </p>
+                        </div>
+                        <div class="content has-text-justified is-centered">
+                            <p>
+                                We also use GPT-4o to score the relevance between the ground truth and generated answers. As shown in Figure 6, AtlasKV achieves significantly higher GPTScores than KBLaM. Although ICL can generate a very accurate result with over 0.9 scores, it is super time-consuming to put all external knowledge into the context of LLMs.
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img src="./static/images/gptscore.png" style="width:800px;" class="result-image"
+                                alt="Interpolation end reference image.">
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 6.</b> Scored by GPT-4o between 0 and 1, the shaded area exhibits the standard error over 5 random seeds. The score of each random seed is also the average of 5 generation results.
+                            </p>
+                        </div>
+                        <div class="content has-text-justified is-centered">
+                            <p>
+                                We also observed dynamics in the training processes of AtlasKV, which can suggest the model regularly start learning to retrieve relevant knowledge from the external KG triples, instead of brute force over-fitting, from a specific training step.
+                            </p>
+                        </div>
+                        <div class="content has-text-centered">
+                            <img src="./static/images/td.png" style="width:800px;" class="result-image"
+                                alt="Interpolation end reference image.">
+                            <p class="content is-centered" style="color: gray; font-size: 10pt;">
+                                <b>Figure 7.</b> The training loss curves of AtlasKV with correct and random paired key-value embeddings (KGKVs) across three different sentence encoders.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">Contact</h2>
+                <p>
+                    Welcome to check our paper for more details of the research work. If there is any question, please feel free to contact us.
+                </p>
+                <p>
+                    If you find our paper and repo useful, please consider to cite:
+                </p>
+                <pre>
+                    <code>
+                    @misc{huang2025atlaskvaugmentingllmsbillionscale,
+                            title={AtlasKV: Augmenting LLMs with Billion-Scale Knowledge Graphs in 20GB VRAM}, 
+                            author={Haoyu Huang and Hong Ting Tsang and Jiaxin Bai and Xi Peng and Gong Zhang and Yangqiu Song},
+                            year={2025},
+                            eprint={2510.17934},
+                            archivePrefix={arXiv},
+                            primaryClass={cs.CL},
+                            url={https://arxiv.org/abs/2510.17934}, 
+                      }
+                    </code>
+                </pre>
+                <br>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="content">
+                            <p>
+                                Thanks for the source template from
+                                <a href="https://github.com/nerfies/nerfies.github.io">here</a>
+                                .
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
